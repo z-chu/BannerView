@@ -1,9 +1,10 @@
 package com.fungo.banner.sample
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
 import com.fungo.banner.BannerView
 import com.fungo.banner.holder.BannerHolderCreator
 import com.fungo.banner.sample.holder.BannerBean
@@ -91,6 +92,8 @@ class MainActivity : AppCompatActivity() {
                 updateBanner(mDatas)
             }
         }
+
+        btnCardStack.setOnClickListener { startActivity(Intent(this, CardStackActivity::class.java)) }
     }
 
 
