@@ -772,8 +772,6 @@ class BannerView<T> : RelativeLayout {
      */
     fun setPageMode(pageMode: PageMode) {
         mPageMode = pageMode
-        // 如果设置的是普通的模式，这里需要将默认的Padding重置
-        mPagePadding = if (mPageMode == PageMode.NORMAL) 0 else dpToPx(20)
     }
 
     /**

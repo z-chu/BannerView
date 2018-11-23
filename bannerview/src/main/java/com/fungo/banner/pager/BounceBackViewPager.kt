@@ -97,6 +97,7 @@ class BounceBackViewPager(context: Context, attrs: AttributeSet) : ViewPager(con
 
     init {
         clipChildren = false
+        clipToPadding = false
         setStaticTransformationsEnabled(true)
         val configuration = ViewConfiguration.get(context)
         mTouchSlop = configuration.scaledPagingTouchSlop
