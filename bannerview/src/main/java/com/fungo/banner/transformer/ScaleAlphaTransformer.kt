@@ -1,6 +1,5 @@
 package com.fungo.banner.transformer
 
-import android.support.v4.view.ViewPager
 import android.view.View
 
 /**
@@ -9,7 +8,7 @@ import android.view.View
  *
  * 左右按一定比例缩放和渐变的Transformer
  */
-class ScaleAlphaTransformer(private var scaleValue: Float, private var alphaValue: Float) : ViewPager.PageTransformer {
+class ScaleAlphaTransformer(private var scaleValue: Float, private var alphaValue: Float) : androidx.viewpager.widget.ViewPager.PageTransformer {
 
 
     override fun transformPage(page: View, position: Float) {

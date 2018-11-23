@@ -5,11 +5,6 @@ import android.content.Context
 import android.content.res.Resources
 import android.os.Build
 import android.os.Handler
-import android.support.annotation.AttrRes
-import android.support.annotation.DrawableRes
-import android.support.annotation.StyleRes
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -20,6 +15,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.Scroller
+import androidx.annotation.AttrRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StyleRes
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import com.fungo.banner.holder.BannerHolderCreator
 import com.fungo.banner.holder.BaseBannerHolder
 import com.fungo.banner.pager.BounceBackViewPager
@@ -425,7 +425,7 @@ class BannerView<T> : RelativeLayout {
             val holder: BaseBannerHolder<T> = holderCreator.onCreateBannerHolder() as BaseBannerHolder<T>
 
             // create View
-            val view = LayoutInflater.from(container.context).inflate(holder.getHolderResId(), null)
+            val view = LayoutInflater.from(container.context).inflate(holder.getHolderResId(), container, false)
 
             // bind data
             if (datas.isNotEmpty()) {

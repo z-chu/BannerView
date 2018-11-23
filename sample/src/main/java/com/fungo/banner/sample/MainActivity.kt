@@ -2,8 +2,8 @@ package com.fungo.banner.sample
 
 import android.os.Bundle
 import android.os.Handler
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import androidx.appcompat.app.AppCompatActivity
 import com.fungo.banner.BannerView
 import com.fungo.banner.holder.BannerHolderCreator
 import com.fungo.banner.sample.holder.BannerBean
@@ -73,9 +73,9 @@ class MainActivity : AppCompatActivity() {
         rbHide.isChecked = true
 
 
-        mBannerView?.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
+        mBannerView?.addOnPageChangeListener(object : androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener() {
             override fun onPageScrollStateChanged(p0: Int) {
-                swipeRefreshLayout.isEnabled = p0 == ViewPager.SCROLL_STATE_IDLE
+                swipeRefreshLayout.isEnabled = p0 == androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE
             }
         })
 

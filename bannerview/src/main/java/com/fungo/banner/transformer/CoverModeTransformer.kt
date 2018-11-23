@@ -1,6 +1,5 @@
 package com.fungo.banner.transformer
 
-import android.support.v4.view.ViewPager
 import android.view.View
 
 /**
@@ -13,7 +12,7 @@ import android.view.View
  * @param pagePadding 中间页面的左右padding值
  * @param pageScale　左右页面高度的缩放比例
  */
-class CoverModeTransformer(private val viewPager: ViewPager, private var coverMargin: Int, private var pagePadding: Int, private var pageScale: Float, private var pageAlpha: Float) : ViewPager.PageTransformer {
+class CoverModeTransformer(private val viewPager: androidx.viewpager.widget.ViewPager, private var coverMargin: Int, private var pagePadding: Int, private var pageScale: Float, private var pageAlpha: Float) : androidx.viewpager.widget.ViewPager.PageTransformer {
 
     private var reduceX = 0.0f
     private var itemWidth = 0f

@@ -4,7 +4,6 @@ import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.content.Context
 import android.graphics.Camera
-import android.support.v4.view.ViewPager
 import android.util.AttributeSet
 import android.util.SparseIntArray
 import android.view.MotionEvent
@@ -12,6 +11,7 @@ import android.view.View
 import android.view.ViewConfiguration
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.Transformation
+import androidx.viewpager.widget.ViewPager
 import java.util.*
 
 /**
@@ -27,7 +27,7 @@ class BounceBackViewPager(context: Context, attrs: AttributeSet) : ViewPager(con
     private val childCenterXAbs = ArrayList<Int>()
     private val childIndex = SparseIntArray()
 
-    private var mScrollListener: ViewPager.OnPageChangeListener? = null
+    private var mScrollListener: androidx.viewpager.widget.ViewPager.OnPageChangeListener? = null
     private var mLastMotionX: Float = 0.toFloat()
     private var mActivePointerId: Int = 0
     private var mScrollPosition: Int = 0
@@ -112,7 +112,7 @@ class BounceBackViewPager(context: Context, attrs: AttributeSet) : ViewPager(con
         this.overscrollAnimationDuration = overscrollAnimationDuration
     }
 
-    override fun addOnPageChangeListener(listener: ViewPager.OnPageChangeListener) {
+    override fun addOnPageChangeListener(listener: androidx.viewpager.widget.ViewPager.OnPageChangeListener) {
         mScrollListener = listener
     }
 
@@ -166,7 +166,7 @@ class BounceBackViewPager(context: Context, attrs: AttributeSet) : ViewPager(con
         // }
     }
 
-    private inner class MyOnPageChangeListener : ViewPager.OnPageChangeListener {
+    private inner class MyOnPageChangeListener : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
 
         override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
             if (mScrollListener != null) {
@@ -190,7 +190,7 @@ class BounceBackViewPager(context: Context, attrs: AttributeSet) : ViewPager(con
             if (mScrollListener != null) {
                 mScrollListener!!.onPageScrollStateChanged(state)
             }
-            if (state == ViewPager.SCROLL_STATE_IDLE) {
+            if (state == androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE) {
                 mScrollPositionOffset = 0f
             }
         }

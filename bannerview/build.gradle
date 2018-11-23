@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group= 'com.github.pingerone'
+group = 'com.github.PingerOne'
 
 android {
 
@@ -26,6 +26,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation rootProject.ext.dependencies.kotlin
-    implementation rootProject.ext.dependencies.appcompat_v7
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.70'
 }
