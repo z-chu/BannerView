@@ -1,34 +1,19 @@
-# [BannerView(轮播图控件)](https://github.com/PingerOne/BannerView)
-[![](https://img.shields.io/badge/download-apk-yellow.svg)](https://www.pgyer.com/apiv2/app/install?appKey=9433e2bd2db02dbe4da8f2a97c7bf0cd&_api_key=c82f0298d6616c3dc3a4ac02c7919399) [![](https://img.shields.io/badge/release-v1.0.0-orange.svg)](https://github.com/PingerOne/BannerView/releases) [![](https://www.jitpack.io/v/PingerOne/BannerView.svg)](https://www.jitpack.io/#PingerOne/BannerView) [![](https://img.shields.io/hexpm/l/plug.svg)](https://github.com/PingerOne/BannerView/blob/master/LICENSE) [![](https://img.shields.io/badge/简书-笑说余生-red.svg)](https://www.jianshu.com/u/64f479a1cef7)
-
-
+# BannerView(轮播图控件)
+ [ ![Download](https://api.bintray.com/packages/fungo/maven/bannerview/images/download.svg) ](https://bintray.com/fungo/maven/bannerview/_latestVersion)
 
 轮播图控件，封装ViewPager，支持无限循环轮播，支持三种常用页面特效，支持设置指示器，支持自动切换手动滑动和自动滑动的滑动时长，封装Banner的Holder实现更加简单。使用Kotlin开发，在项目中使用，满足大部分Banner相关需求，可以直接使用。
 
 本项目基于[MZBannerView](https://github.com/pinguo-zhouwei/MZBannerView)进行二次开发，只用于开源交流，如果侵权等问题请及时提醒。
 
 
-## 预览
-![BannerView](http://ph7b4jne7.bkt.clouddn.com/image/banner.gif)
-
-
 ## 使用方法
-
-1. 在项目根目录的build.gradle文件中添加jitpack仓库
-
-        allprojects {
-            repositories {
-                maven { url 'https://jitpack.io' }
-            }
-        }
-
-2. 在application的build.gradle文件中引入仓库依赖
+1. 在application的build.gradle文件中引入仓库依赖
 
         dependencies {
-             implementation 'com.github.PingerOne:BannerView:1.0.8'
+             implementation  'com.pingerx:bannerview:1.0.0'
         }
 
-3. 在xml文件中引用BannerView控件
+2. 在xml文件中引用BannerView控件
 
         <com.fungo.banner.BannerView
             android:id="@+id/bannerView"
@@ -47,7 +32,7 @@
             app:indicatorPaddingBottom="12dp"
             app:indicatorPaddingRight="12dp"/>
 
-4. 在代码中设置数据和适配器
+3. 在代码中设置数据和适配器
 
         bannerView.setPages(data, object : BannerHolderCreator<BannerBean, BannerHolder> {
              override fun onCreateBannerHolder(): BannerHolder {
@@ -78,6 +63,3 @@
 ### 参考
 * [仿魅族应用的广告BannerView](https://jianshu.com/p/653680cfe877)
 * [巧用ViewPager 打造不一样的广告轮播切换效果](https://blog.csdn.net/lmj623565791/article/details/51339751)
-
----
-> 欢迎大家访问我的[简书](http://www.jianshu.com/u/64f479a1cef7)，[博客](http://wanit.me/)和[GitHub](https://github.com/PingerOne)。
