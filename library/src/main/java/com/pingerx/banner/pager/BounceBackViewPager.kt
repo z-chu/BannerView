@@ -19,7 +19,7 @@ import java.util.*
  * @since 2018/11/3 1:52
  */
 
-class BounceBackViewPager(context: Context, attrs: AttributeSet) : ViewPager(context, attrs) {
+class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet?=null) : ViewPager(context, attrs) {
 
     private val mOverscrollEffect = OverscrollEffect()
     private val mCamera = Camera()

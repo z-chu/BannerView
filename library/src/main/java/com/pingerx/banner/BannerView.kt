@@ -44,7 +44,9 @@ import java.util.*
  * 参考：[https://github.com/pinguo-zhouwei/MZBannerView]
  *
  */
-class BannerView<T> : RelativeLayout {
+class BannerView<T> @JvmOverloads constructor(
+        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int =0
+) : RelativeLayout(context, attrs, defStyleAttr) {
 
     // 适配器
     private var mAdapter: BannerPagerAdapter<T>? = null
@@ -120,18 +122,10 @@ class BannerView<T> : RelativeLayout {
     // 指示器的图片资源 mIndicatorRes[0] 为为选中，mIndicatorRes[1]为选中
     private var mIndicatorRes = emptyArray<Int>()
 
-    constructor(context: Context) : this(context, null)
-
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
-
-    constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    constructor(context: Context, attrs: AttributeSet?, @AttrRes defStyleAttr: Int, @StyleRes defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes) {
+    init{
         readAttrs(context, attrs)
         initView()
     }
-
 
     private fun readAttrs(context: Context, attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.BannerView)
