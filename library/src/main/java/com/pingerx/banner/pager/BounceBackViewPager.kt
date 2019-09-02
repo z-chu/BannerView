@@ -19,7 +19,7 @@ import java.util.*
  * @since 2018/11/3 1:52
  */
 
-class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet?=null) : ViewPager(context, attrs) {
+class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : ViewPager(context, attrs) {
 
     private val mOverscrollEffect = OverscrollEffect()
     private val mCamera = Camera()
@@ -27,7 +27,7 @@ class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: Att
     private val childCenterXAbs = ArrayList<Int>()
     private val childIndex = SparseIntArray()
 
-    private var mScrollListener: androidx.viewpager.widget.ViewPager.OnPageChangeListener? = null
+    private var mOnPageChangeListeners: MutableList<OnPageChangeListener> = ArrayList()
     private var mLastMotionX: Float = 0.toFloat()
     private var mActivePointerId: Int = 0
     private var mScrollPosition: Int = 0
@@ -113,9 +113,18 @@ class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: Att
     }
 
     override fun addOnPageChangeListener(listener: androidx.viewpager.widget.ViewPager.OnPageChangeListener) {
-        mScrollListener = listener
+        mOnPageChangeListeners.add(listener)
     }
 
+    override fun removeOnPageChangeListener(listener: OnPageChangeListener) {
+        super.removeOnPageChangeListener(listener)
+        mOnPageChangeListeners.remove(listener)
+    }
+
+    override fun clearOnPageChangeListeners() {
+        super.clearOnPageChangeListeners()
+        mOnPageChangeListeners.clear()
+    }
 
     /**
      * @param childCount
@@ -169,8 +178,8 @@ class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: Att
     private inner class MyOnPageChangeListener : androidx.viewpager.widget.ViewPager.OnPageChangeListener {
 
         override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-            if (mScrollListener != null) {
-                mScrollListener!!.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            for (onPageChangeListener in mOnPageChangeListeners) {
+                onPageChangeListener.onPageScrolled(position, positionOffset, positionOffsetPixels)
             }
             mScrollPosition = position
             mScrollPositionOffset = positionOffset
@@ -179,16 +188,14 @@ class BounceBackViewPager @JvmOverloads constructor(context: Context, attrs: Att
         }
 
         override fun onPageSelected(position: Int) {
-
-            if (mScrollListener != null) {
-                mScrollListener!!.onPageSelected(position)
+            for (onPageChangeListener in mOnPageChangeListeners) {
+                onPageChangeListener.onPageSelected(position)
             }
         }
 
         override fun onPageScrollStateChanged(state: Int) {
-
-            if (mScrollListener != null) {
-                mScrollListener!!.onPageScrollStateChanged(state)
+            for (onPageChangeListener in mOnPageChangeListeners) {
+                onPageChangeListener.onPageScrollStateChanged(state)
             }
             if (state == androidx.viewpager.widget.ViewPager.SCROLL_STATE_IDLE) {
                 mScrollPositionOffset = 0f
